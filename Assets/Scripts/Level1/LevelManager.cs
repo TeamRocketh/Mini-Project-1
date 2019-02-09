@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     public Material Ill;
 
+    public bool lit = false;
+
     public Image text;
     public Button exit;
 
@@ -19,7 +21,10 @@ public class LevelManager : MonoBehaviour
         text.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
         Ill.color = new Color(0, 0, 0, 1);
-        Ill.SetColor("_EmissionColor", Color.black);
+        if (!lit)
+            Ill.SetColor("_EmissionColor", Color.black);
+        else
+            Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
     }
 
     void Update()
