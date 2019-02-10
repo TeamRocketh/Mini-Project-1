@@ -66,7 +66,7 @@ public class OpenDoorForLamaException : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PlayerController.isDashing && exited)
+        if (PlayerController.isDashing && exited && door.GetComponent<BoxCollider>().enabled == true)
         {
             door.GetComponent<BoxCollider>().enabled = false;
         }

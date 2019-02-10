@@ -37,11 +37,13 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            if (SceneManager.GetActiveScene().buildIndex == 0)
+            if (SceneManager.GetActiveScene().name == "Level1")
                 ill = false;
+            if (SceneManager.GetActiveScene().name == "Credits")
+                SceneManager.LoadScene("Level_Menu");
         }
         if (ill)
         {

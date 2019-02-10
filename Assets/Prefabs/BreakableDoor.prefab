@@ -22,6 +22,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7863221075043945673}
+  - component: {fileID: 6441386303907947707}
+  - component: {fileID: 6223264747133187507}
   m_Layer: 0
   m_Name: BreakableDoor
   m_TagString: Untagged
@@ -45,6 +47,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6441386303907947707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761940312667743960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd81294f4980d24fb1860aba321b9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoxHP: 1
+  boxSpawnLocation: {x: 0, y: 0, z: 0}
+--- !u!65 &6223264747133187507
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761940312667743960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2714403, y: 3.9498067, z: 1}
+  m_Center: {x: 0.30987203, y: 1.9663942, z: 0}
 --- !u!65 &3283030285943429875
 BoxCollider:
   m_ObjectHideFlags: 0

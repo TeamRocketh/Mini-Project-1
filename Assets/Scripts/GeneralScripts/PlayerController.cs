@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public bool dashPress=false;
     [HideInInspector]public Vector3 dir = Vector3.zero;
     public static float globalGravity = -9.81f;
+
     void Start()
     {
         isDashing = false;
