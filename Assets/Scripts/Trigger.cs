@@ -18,6 +18,7 @@ public class Trigger : MonoBehaviour
         {
             door.SetActive(true);
             col.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

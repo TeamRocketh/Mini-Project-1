@@ -11,7 +11,6 @@ public class OpenDoor : MonoBehaviour
     GameObject LD, RD;
 
     public bool cond = false;
-    public bool illuminate = false;
 
     private void Start()
     {
@@ -33,7 +32,6 @@ public class OpenDoor : MonoBehaviour
 
     void Update()
     {
-
         if (!cond)
         {
             float temp = Time.deltaTime * doorSpeedClose;
@@ -52,11 +50,6 @@ public class OpenDoor : MonoBehaviour
                 LD.transform.localPosition -= new Vector3(temp, 0, 0);
             if (RD.transform.localPosition.x < 1.2)
                 RD.transform.localPosition += new Vector3(temp, 0, 0);
-        }
-
-        if (illuminate && !cond)
-        {
-            LevelManager.ill = true;
         }
     }
 }

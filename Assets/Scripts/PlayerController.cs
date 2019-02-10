@@ -9,20 +9,20 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     public float speed;
     public float dashSpeed, dashTime;
-    float currentDashTime,tempDashTime,tempDashSpeed;
-    [HideInInspector]public bool dashPress=false;
+    public float currentDashTime;
+    float tempDashTime, tempDashSpeed;
+    [HideInInspector]public bool dashPress = false;
     [HideInInspector]public Vector3 dir = Vector3.zero;
     public static float globalGravity = -9.81f;
 
+    public static bool startingComplete = false;
 
     void Start()
     {
         tempDashSpeed = dashSpeed;
         tempDashTime = dashTime;
-        canLongDash = true;
         isLongDashing = false;
         isDashing = false;
-        canDash = true;
         rb = GetComponent<Rigidbody>();
         currentDashTime = dashTime;
     }
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         if (!isDashing)
         {            
-            if (!dashPress)
+            if (!dashPress||!canLongDash)
             {
                 if (moveX == 0)
                 {
@@ -55,29 +55,32 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) && canDash)
                 {
-                    dir = new Vector3(moveX, 0, moveZ);
                     dashPress = true;
                 }
             }
             else if(rb.velocity!=Vector3.zero && canLongDash)
             {
-                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime*5);
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime * 20);
                 if(Mathf.Abs(rb.velocity.x)<=0.5f && Mathf.Abs(rb.velocity.z) <= 0.5f)
                 {
                     rb.velocity = Vector3.zero;
-                    Debug.Log("lul");
+                    isLongDashing = true;
                 }
             }
             else if(rb.velocity == Vector3.zero && canLongDash)
             {
                 dashSpeed = 400;
-                dashTime = 0.05f;
+                dashTime = 0.04f;
+                currentDashTime = dashTime;
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Space) && canDash)
             {
                 gravityScale = 0;
+                dir = new Vector3(moveX, 0, moveZ);
+                rb.velocity = Vector3.zero;
                 rb.velocity = dir*dashSpeed;
+                Debug.Log(dashSpeed);
                 dashPress = false;
                 isDashing = true;
             }           
@@ -97,6 +100,7 @@ public class PlayerController : MonoBehaviour
                 dashTime = tempDashTime;
                 dashSpeed = tempDashSpeed;
                 currentDashTime = dashTime;
+                isLongDashing = false;
             }
         }
     }
@@ -111,5 +115,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
     }
 }

@@ -16,11 +16,11 @@ public class DoorBreak : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && PlayerController.isDashing)
+        if (other.tag == "Player" && PlayerController.isLongDashing)
         {
             BoxHP--;
             moveDir = other.GetComponent<PlayerController>().dir;
-            if (BoxHP == 0)
+            if (BoxHP < 1)
             {
                 gameObject.SetActive(false);
             }
