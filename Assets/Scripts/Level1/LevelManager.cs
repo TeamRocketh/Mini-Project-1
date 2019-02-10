@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
         text.gameObject.SetActive(false);
         exit.gameObject.SetActive(false);
         Ill.color = new Color(0, 0, 0, 1);
-        if (!lit)
+        if (SceneManager.GetActiveScene().buildIndex==3)
         {
             Ill.SetColor("_EmissionColor", Color.black);
             Lights.SetActive(false);
@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             //Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
-            Ill.SetColor("_EmissionColor", new Color(0, 0.76f, 1, 1));
+            Ill.SetColor("_EmissionColor", new Color(0, 0.5f, 1, 1));
             Lights.SetActive(true);
         }
     }
@@ -47,8 +47,8 @@ public class LevelManager : MonoBehaviour
         }
         if (ill)
         {
-            Ill.color = new Color(0, 1, 0.6f, 1);
-            Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
+            Ill.color = new Color(0, 0.76f, 1, 1);
+            Ill.SetColor("_EmissionColor", new Color(0, 0.5f, 1, 1));
             Lights.SetActive(true);
         }
         if (quitting && quitting2)

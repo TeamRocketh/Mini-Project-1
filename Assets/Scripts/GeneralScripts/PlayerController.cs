@@ -5,17 +5,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float gravityScale = 10.0f;
-    public static bool canDash, isDashing;
+    public static bool canDash,canLongDash, isDashing,isLongDashing;
     Rigidbody rb;
     public float speed;
     public float dashSpeed, dashTime;
-    float currentDashTime;
+    float currentDashTime,tempDashTime,tempDashSpeed;
     [HideInInspector]public bool dashPress=false;
     [HideInInspector]public Vector3 dir = Vector3.zero;
     public static float globalGravity = -9.81f;
 
+
     void Start()
     {
+        tempDashSpeed = dashSpeed;
+        tempDashTime = dashTime;
+        canLongDash = true;
+        isLongDashing = false;
         isDashing = false;
         canDash = true;
         rb = GetComponent<Rigidbody>();
@@ -50,20 +55,30 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) && canDash)
                 {
-
                     dir = new Vector3(moveX, 0, moveZ);
                     dashPress = true;
                 }
             }
-            else if(rb.velocity!=Vector3.zero)
+            else if(rb.velocity!=Vector3.zero && canLongDash)
             {
-                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime*4);
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime*5);
+                if(Mathf.Abs(rb.velocity.x)<=0.5f && Mathf.Abs(rb.velocity.z) <= 0.5f)
+                {
+                    rb.velocity = Vector3.zero;
+                    Debug.Log("lul");
+                }
+            }
+            else if(rb.velocity == Vector3.zero && canLongDash)
+            {
+                dashSpeed = 400;
+                dashTime = 0.05f;
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 gravityScale = 0;
                 rb.velocity = dir*dashSpeed;
+                dashPress = false;
                 isDashing = true;
             }           
         }
@@ -78,8 +93,9 @@ public class PlayerController : MonoBehaviour
             {
                 gravityScale = 10;
                 isDashing = false;
-                dashPress = false;
                 dir = Vector3.zero;
+                dashTime = tempDashTime;
+                dashSpeed = tempDashSpeed;
                 currentDashTime = dashTime;
             }
         }
