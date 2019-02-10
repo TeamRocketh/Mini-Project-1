@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7395260916672867403}
   - component: {fileID: 7395260916672867402}
   - component: {fileID: 7084978138181151532}
+  - component: {fileID: 4437483226614233650}
   m_Layer: 0
   m_Name: BreakableBox
   m_TagString: Box
@@ -107,4 +108,19 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
+--- !u!114 &4437483226614233650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395260916672867401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0f500fafacbf645a070f8f898f4789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoxHP: 2
+  boxSpawnLocation: {x: 0, y: 0, z: 0}
+  speed: 15

@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2808215832043943963}
   - component: {fileID: 2808215832043943962}
   m_Layer: 0
-  m_Name: PinkCube
+  m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

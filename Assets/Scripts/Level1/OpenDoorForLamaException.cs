@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class OpenDoorForLamaException : MonoBehaviour
 {
     public GameObject door;
+    public float doorSpeed;
     public float doorSpeedClose;
-    public float doorSpeedOpen;
 
     GameObject LD, RD;
 
-    public bool cond = false;
-    public bool illuminate = false;
+    bool cond = false;
+    bool exited = false;
 
     private void Start()
     {
@@ -22,18 +22,22 @@ public class OpenDoor : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Box")
+        {
             cond = true;
+            exited = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Box")
+        {
             cond = false;
+        }
     }
 
     void Update()
     {
-
         if (!cond)
         {
             float temp = Time.deltaTime * doorSpeedClose;
@@ -42,21 +46,29 @@ public class OpenDoor : MonoBehaviour
                 LD.transform.localPosition += new Vector3(temp, 0, 0);
             if (RD.transform.localPosition.x > 0)
                 RD.transform.localPosition -= new Vector3(temp, 0, 0);
+
+            if (LD.transform.localPosition.x >= 0 && RD.transform.localPosition.x <= 0 && door.GetComponent<BoxCollider>().enabled == false)
+            {
+                door.GetComponent<BoxCollider>().enabled = true;
+            }
         }
 
         if (cond)
         {
-            float temp = Time.deltaTime * doorSpeedOpen;
+            float temp = Time.deltaTime * doorSpeed;
 
             if (LD.transform.localPosition.x > -1.2)
                 LD.transform.localPosition -= new Vector3(temp, 0, 0);
             if (RD.transform.localPosition.x < 1.2)
                 RD.transform.localPosition += new Vector3(temp, 0, 0);
         }
+    }
 
-        if (illuminate && !cond)
+    private void FixedUpdate()
+    {
+        if (PlayerController.isDashing && exited)
         {
-            LevelManager.ill = true;
+            door.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
