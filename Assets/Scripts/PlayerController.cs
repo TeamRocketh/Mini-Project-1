@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float gravityScale = 10.0f;
-    public static bool canDash, canLongDash, canStoreDash, isDashing, isLongDashing;
-    public bool hasDashCoolDown;
+    public static bool canDash, canLongDash, isDashing, isLongDashing;
     Rigidbody rb;
-    public float speed, dashSpeed, dashTime, cooldownTimer, longDashHoldTime;
-    public float currentDashTime, currentCooldownTime, currentLongDashHoldTime;
+    public float speed;
+    public float dashSpeed, dashTime;
+    public float currentDashTime;
     float tempDashTime, tempDashSpeed;
     [HideInInspector] public bool dashPress = false;
     [HideInInspector] public Vector3 dir = Vector3.zero;
     public static float globalGravity = -9.81f;
-    public int currentDashCharge = 0;
+
     public static bool startingComplete = false;
 
     void Start()
@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         rb = GetComponent<Rigidbody>();
         currentDashTime = dashTime;
-        currentCooldownTime = cooldownTimer;
-        currentLongDashHoldTime = longDashHoldTime;
     }
 
     void Update()
@@ -60,72 +58,37 @@ public class PlayerController : MonoBehaviour
                     dashPress = true;
                 }
             }
-            else if (isLongDashing != true && canLongDash)
+            else if (rb.velocity != Vector3.zero && canLongDash)
             {
                 rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime * 20);
-                if (currentLongDashHoldTime <= 0 && !canStoreDash)
+                if (Mathf.Abs(rb.velocity.x) <= 0.5f && Mathf.Abs(rb.velocity.z) <= 0.5f)
                 {
-                    dashSpeed = 400;
-                    dashTime = 0.04f;
-                    currentDashTime = dashTime;
+                    rb.velocity = Vector3.zero;
+                    isLongDashing = true;
                 }
-                if (canStoreDash)
-                {
-                    currentDashTime = dashTime;
-                    if (currentLongDashHoldTime <= 0 && currentLongDashHoldTime > -1 && currentDashCharge >= 1)
-                    {
-                        dashSpeed = 400;
-                        dashTime = 0.04f;
-                    }
-                    else if (currentLongDashHoldTime <= -1 && currentLongDashHoldTime > -2 && currentDashCharge >= 2)
-                    {
-                        dashSpeed = 600;
-                        dashTime = 0.04f;
-                    }
-                    else if (currentLongDashHoldTime <= -2 && currentDashCharge == 3)
-                    {
-                        dashSpeed = 800;
-                        dashTime = 0.04f;
-
-                    }
-
-                }
+            }
+            else if (rb.velocity == Vector3.zero && canLongDash)
+            {
+                dashSpeed = 400;
+                dashTime = 0.04f;
+                currentDashTime = dashTime;
             }
 
             if (Input.GetKeyUp(KeyCode.Space) && canDash)
             {
-                dir = new Vector3(moveX, 0, moveZ);
-                if (hasDashCoolDown && dir != Vector3.zero)
-                {
-                    canDash = false;
-                }
-                if (dashSpeed >= 400)
-                {
-                    isLongDashing = true;
-                    switch (dashSpeed)
-                    {
-                        case 400:
-                            currentDashCharge--;
-                            break;
-                        case 600:
-                            currentDashCharge -= 2;
-                            break;
-                        case 800:
-                            currentDashCharge -= 3;
-                            break;
-                    }
-                }
+                GetComponent<TrailRenderer>().enabled = true;
                 gravityScale = 0;
+                dir = new Vector3(moveX, 0, moveZ);
                 rb.velocity = Vector3.zero;
                 rb.velocity = dir * dashSpeed;
                 dashPress = false;
-                currentLongDashHoldTime = longDashHoldTime;
                 isDashing = true;
             }
         }
         else
         {
             currentDashTime -= Time.deltaTime;
+            rb.velocity = dir * dashSpeed;
             if (currentDashTime <= 0)
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
@@ -139,24 +102,8 @@ public class PlayerController : MonoBehaviour
                 dashSpeed = tempDashSpeed;
                 currentDashTime = dashTime;
                 isLongDashing = false;
+                GetComponent<TrailRenderer>().enabled = false;
             }
-        }
-        if (currentCooldownTime <= cooldownTimer)
-        {
-            currentCooldownTime -= Time.deltaTime;
-            if (currentCooldownTime <= 0)
-            {
-                canDash = true;
-                currentCooldownTime = cooldownTimer;
-                if (currentDashCharge < 3)
-                {
-                    currentDashCharge++;
-                }
-            }
-        }
-        if (dashPress)
-        {
-            currentLongDashHoldTime -= Time.deltaTime;
         }
     }
 

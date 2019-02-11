@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour
                 case "level_Menu":
                     if (poweredUp)
                     {
+                        Debug.Log("Fucku");
                         poweredUp = false;
                         PlayerController.canDash = PlayerController.canLongDash = true;
                         GameObject.FindGameObjectWithTag("Level1Door").transform.GetChild(0).gameObject.SetActive(true);
