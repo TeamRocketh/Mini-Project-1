@@ -80,8 +80,7 @@ public class PlayerController : MonoBehaviour
                 gravityScale = 0;
                 dir = new Vector3(moveX, 0, moveZ);
                 rb.velocity = Vector3.zero;
-                rb.velocity = dir*dashSpeed;
-                //Debug.Log(dashSpeed);
+                rb.velocity = dir * dashSpeed;
                 dashPress = false;
                 isDashing = true;
             }           

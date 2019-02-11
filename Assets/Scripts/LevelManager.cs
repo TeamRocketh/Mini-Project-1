@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour
                 case "Level3":
                     PlayerController.canDash = PlayerController.canLongDash = true;
                     //Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
-                    Ill.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
+                    Ill.SetColor("_EmissionColor", Color.red);
                     break;
                 case "ExitHUB":
                     PlayerController.canDash = PlayerController.canLongDash = true;
