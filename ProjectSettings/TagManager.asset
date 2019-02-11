@@ -8,6 +8,7 @@ TagManager:
   - Lights
   - Canvas
   - Level1Door
+  - Fire
   layers:
   - Default
   - TransparentFX

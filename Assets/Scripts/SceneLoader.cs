@@ -29,7 +29,7 @@ public class SceneLoader : MonoBehaviour
                 if (fromWhere == 1)
                     LevelManager.changePositionTo = new Vector3(-10, 6.28f, 18);
                 else if (fromWhere == 2)
-                    LevelManager.changePositionTo = new Vector3(23, 6.28f, 35);
+                    LevelManager.changePositionTo = new Vector3(10, 6.28f, 28);
             }
         }
     }

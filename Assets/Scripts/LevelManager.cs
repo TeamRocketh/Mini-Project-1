@@ -38,8 +38,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad < Time.deltaTime * 2)
         {
-            text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).GetComponent<Image>();
-            exit = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<Button>();
+            text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<Image>();
+            exit = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).GetComponent<Button>();
             text.gameObject.SetActive(false);
             exit.gameObject.SetActive(false);
 
@@ -108,6 +108,8 @@ public class LevelManager : MonoBehaviour
         if (!quitting)
         {
             Application.CancelQuit();
+            text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<Image>();
+            exit = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).GetComponent<Button>();
             text.gameObject.SetActive(true);
             exit.gameObject.SetActive(true);
             quitting = true;

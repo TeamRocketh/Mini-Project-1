@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PoleManager : MonoBehaviour
 {
+    public GameObject FireBoi;
+
     public static bool RedAvailable, BlueAvailable, OrangeAvailable;
 
     public static int Pole1, Pole2, Pole3;
 
+    public static bool Won = false;
+
     private void Start()
     {
+        FireBoi.SetActive(false);
+
         if (LevelManager.BulbCollected >= 3)
         {
             RedAvailable = BlueAvailable = OrangeAvailable = true;
@@ -19,9 +25,10 @@ public class PoleManager : MonoBehaviour
 
     private void Update()
     {
-        if ((Pole1 == 3) && (Pole2 == 1) && (Pole3 == 2))
+        if ((Pole1 == 2) && (Pole2 == 3) && (Pole3 == 1))
         {
-            Debug.Log("WinWin");
+            Won = true;
+            FireBoi.SetActive(true);
         }
     }
 }
