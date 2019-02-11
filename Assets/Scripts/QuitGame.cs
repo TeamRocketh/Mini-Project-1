@@ -7,6 +7,9 @@ public class QuitGame : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
+        {
+            PlayerPrefs.DeleteAll();
             Application.Quit();
+        }
     }
 }

@@ -32,11 +32,7 @@ public class Bulb1 : MonoBehaviour
                 case 3:
                     Ill.SetColor("_EmissionColor", new Color(1, 0.3f, 0));
                     PlayerController.canStoreDash = true;
-                    /*GameObject temp2 = GameObject.FindGameObjectWithTag("Lights").transform.GetChild(0).gameObject;
-                    foreach (Transform tr in temp2.transform)
-                    {
-                        tr.GetComponent<Light>().color = new Color(1, 0.3f, 0);
-                    }*/
+                    PlayerController.dashHasCooldown = true;
                     gameObject.SetActive(false);
                     break;
             }

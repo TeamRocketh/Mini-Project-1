@@ -20,14 +20,6 @@ public class LevelManager : MonoBehaviour
     public static Vector3 changePositionTo = Vector3.zero;
     public static bool hasKey = false;
 
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey("level"))
-        {
-            SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
-        }
-    }
-
     private void Start()
     {
         if (instance == null)
@@ -36,6 +28,11 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Ill.color = new Color(0, 0, 0, 1);
+
+        /*if (PlayerPrefs.HasKey("level") && SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("level") && Time.time < 1)
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
+        }*/
     }
 
     void Update()
@@ -88,7 +85,7 @@ public class LevelManager : MonoBehaviour
             changePositionTo = Vector3.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             if (SceneManager.GetActiveScene().name == "Level1")

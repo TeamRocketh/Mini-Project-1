@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float gravityScale = 10.0f;
     public static bool canDash, canLongDash, canStoreDash, isDashing, isLongDashing;
-    public bool hasDashCoolDown;
+    public static bool dashHasCooldown;
     bool dashAvailable = true;
     Rigidbody rb;
     public float speed, dashSpeed, dashTime, cooldownTimer, longDashHoldTime;
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         tempDashTime = dashTime;
         isLongDashing = false;
         isDashing = false;
+        dashHasCooldown = false;
         rb = GetComponent<Rigidbody>();
         currentDashTime = dashTime;
         currentCooldownTime = cooldownTimer;
@@ -96,7 +97,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Space) && canDash && dashAvailable)
             {
                 dir = new Vector3(moveX, 0, moveZ);
-                if (hasDashCoolDown && dir != Vector3.zero)
+                GetComponent<TrailRenderer>().enabled = true;
+                if (dashHasCooldown && dir != Vector3.zero)
                 {
                     dashAvailable = false;
                 }
@@ -140,6 +142,7 @@ public class PlayerController : MonoBehaviour
                 dashSpeed = tempDashSpeed;
                 currentDashTime = dashTime;
                 isLongDashing = false;
+                GetComponent<TrailRenderer>().enabled = false;
             }
         }
         if (currentCooldownTime <= cooldownTimer)

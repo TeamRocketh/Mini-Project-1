@@ -1762,6 +1762,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &791332261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8635538480477134939, guid: c205e9d71e89f484e9ab32973d590bbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1104194785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795220381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,11 +2752,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 338.6
       objectReference: {fileID: 0}
-    - target: {fileID: 8635538480477134939, guid: c205e9d71e89f484e9ab32973d590bbe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 644791770767002899, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
       propertyPath: m_Color.r
@@ -2769,11 +2770,15 @@ PrefabInstance:
     - target: {fileID: 644791770767002899, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
       propertyPath: m_Text
-      value: 'To unlock the gate, all 3 lamps must be lit.
+      value: 'Put in the bulbs in the lamps according to the riddle using [1], [2]
+        and [3] Numeric keys.
 
-        Blue is afraid of red, orange must protect blue.
-
-        (Solve the riddle and arrange the bulbs in order)'
+        Remove the bulb for replacing it using [R] key.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635538480477134939, guid: c205e9d71e89f484e9ab32973d590bbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c205e9d71e89f484e9ab32973d590bbe, type: 3}
@@ -3344,7 +3349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1222653308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4591,6 +4596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1589788515}
   - component: {fileID: 1589788514}
+  - component: {fileID: 1589788516}
   m_Layer: 0
   m_Name: PopUp
   m_TagString: Untagged
@@ -4610,7 +4616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4e8e6684ae98644af6dab7e7d7cff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 1104194786}
+  root: {fileID: 791332261}
   bulb: 0
 --- !u!4 &1589788515
 Transform:
@@ -4620,12 +4626,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589788513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 6.45, z: 19.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1589788516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589788513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.810528, y: 1.942789, z: 1.942789}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1601759812
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,7 +5324,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001632013}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 4.3630695, z: 4.405551}
@@ -5318,7 +5337,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001632013}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 4.392313, z: 4.6035085}
@@ -5789,11 +5808,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.2
       objectReference: {fileID: 0}
-    - target: {fileID: 1572199931953014381, guid: 515ee2e0bbdb2a4438cf48dc161e7cef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1572199931953014387, guid: 515ee2e0bbdb2a4438cf48dc161e7cef,
         type: 3}
       propertyPath: orthographic
@@ -5808,6 +5822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572199931953014381, guid: 515ee2e0bbdb2a4438cf48dc161e7cef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515ee2e0bbdb2a4438cf48dc161e7cef, type: 3}
