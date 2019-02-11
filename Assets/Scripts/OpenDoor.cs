@@ -22,6 +22,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.tag == "Player" || other.tag == "Box")
             cond = true;
+        FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[7]);
     }
 
     private void OnTriggerExit(Collider other)

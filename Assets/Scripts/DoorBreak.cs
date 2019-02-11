@@ -24,6 +24,7 @@ public class DoorBreak : MonoBehaviour
             moveDir = other.GetComponent<PlayerController>().dir;
             if (BoxHP < 1)
             {
+                FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[6]);
                 Instantiate(explode, transform.position, Quaternion.identity);
                 gameObject.SetActive(false);
             }

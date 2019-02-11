@@ -88,6 +88,7 @@ public class BoxMovement : MonoBehaviour
 
                 if (BoxHP == 1)
                 {
+                    FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[1]);
                     GameObject temp = transform.GetChild(0).gameObject;
                     foreach (Transform tr in temp.transform)
                     {
@@ -103,6 +104,7 @@ public class BoxMovement : MonoBehaviour
 
                 if (BoxHP == 0)
                 {
+                    FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[4]);
                     Instantiate(explosion, transform.position, Quaternion.identity);
                     transform.position = boxSpawnLocation + new Vector3(0, 1.5f, 0);
                     boxRb.velocity = new Vector3(0, -0.1f, 0);
