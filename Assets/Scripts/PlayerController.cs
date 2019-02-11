@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
                 if (dir != Vector3.zero)
                 {
                     FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[2]);
+                    Camera.main.transform.parent.GetComponent<Animator>().Play("Shake", 0, 0);
                 }
                 
                 GetComponent<TrailRenderer>().enabled = true;
@@ -123,7 +124,10 @@ public class PlayerController : MonoBehaviour
                             break;
                     }
                     if (dir != Vector3.zero)
+                    {
                         FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[3]);
+                        Camera.main.transform.parent.GetComponent<Animator>().Play("Shake", 0, 0);
+                    }
                 }
                 gravityScale = 0;
                 rb.velocity = Vector3.zero;
@@ -159,7 +163,7 @@ public class PlayerController : MonoBehaviour
             {
                 dashAvailable = true;
                 currentCooldownTime = cooldownTimer;
-                if (currentDashCharge < 3)
+                if (currentDashCharge < 3 && !dashPress)
                 {
                     currentDashCharge++;
                 }

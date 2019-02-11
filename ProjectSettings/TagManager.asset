@@ -9,6 +9,9 @@ TagManager:
   - Canvas
   - Level1Door
   - Fire
+  - Door1
+  - Mesh1
+  - Mesh2
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class Bulb1 : MonoBehaviour
                     PlayerController.canDash = true;
                     LevelManager.ill = true;
                     gameObject.SetActive(false);
+                    other.transform.GetChild(1).GetComponent<Light>().range = 8;
                     break;
                 case 2:
                     PlayerController.canLongDash = true;

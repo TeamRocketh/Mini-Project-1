@@ -22,7 +22,10 @@ public class SceneLoader : MonoBehaviour
                 if (fromWhere == 1)
                     LevelManager.changePositionTo = new Vector3(10, 6.28f, 17);
                 else if (fromWhere == 2)
+                {
                     LevelManager.changePositionTo = new Vector3(0, 6.28f, 18);
+                    LevelManager.from2 = true;
+                }
             }
             if (level == "ExitHUB")
             {

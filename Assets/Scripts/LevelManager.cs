@@ -15,7 +15,9 @@ public class LevelManager : MonoBehaviour
 
     static LevelManager instance = null;
 
-    public static int BulbCollected = 3;
+    public static int BulbCollected = 0;
+
+    public static bool from2 = false;
 
     public static Vector3 changePositionTo = Vector3.zero;
     public static bool hasKey = false;
@@ -29,10 +31,10 @@ public class LevelManager : MonoBehaviour
 
         Ill.color = new Color(0, 0, 0, 1);
 
-        /*if (PlayerPrefs.HasKey("level") && SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("level") && Time.time < 1)
+        if (PlayerPrefs.HasKey("level") && SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("level") && Time.time < 1)
         {
             SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
-        }*/
+        }
     }
 
     void Update()
@@ -44,12 +46,22 @@ public class LevelManager : MonoBehaviour
                 case "level_Menu":
                     if (poweredUp)
                     {
-                        Debug.Log("Fucku");
                         poweredUp = false;
                         PlayerController.canDash = PlayerController.canLongDash = true; PlayerController.canStoreDash = false;
-                         GameObject.FindGameObjectWithTag("Level1Door").transform.GetChild(0).gameObject.SetActive(true);
+                        GameObject.FindGameObjectWithTag("Level1Door").transform.GetChild(0).gameObject.SetActive(true);
                     }
-                    else PlayerController.canDash = PlayerController.canLongDash = PlayerController.canStoreDash = false;
+                    else
+                    {
+                        PlayerController.canDash = PlayerController.canLongDash = PlayerController.canStoreDash = false;
+                    }
+                    if (from2)
+                    {
+                        Debug.Log("LUND");
+                        from2 = false;
+                        GameObject.FindGameObjectWithTag("Door1").GetComponent<BoxCollider>().enabled = true;
+                        GameObject.FindGameObjectWithTag("Mesh1").GetComponent<MeshRenderer>().enabled = true;
+                        GameObject.FindGameObjectWithTag("Mesh2").GetComponent<MeshRenderer>().enabled = true;
+                    }
                     break;
                 case "Level1":
                     Ill.SetColor("_EmissionColor", Color.black);

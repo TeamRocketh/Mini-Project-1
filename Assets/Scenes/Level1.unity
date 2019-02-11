@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ad1836650975517419b0c4705968cbfc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.003310943, g: 0.0033157861, b: 0.002350247, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -739,8 +739,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181075914}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -9.59, y: -2.25, z: -16.158}
-  m_LocalScale: {x: 0.47665998, y: 33.329704, z: 13.318295}
+  m_LocalPosition: {x: -11.035, y: -2.25, z: -16.158}
+  m_LocalScale: {x: 0.47665998, y: 33.329704, z: 10.432699}
   m_Children: []
   m_Father: {fileID: 1996284738}
   m_RootOrder: 2
@@ -836,6 +836,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773498706058618608, guid: 9740a8a614a88cf4da2cd30f84b4d2c4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9740a8a614a88cf4da2cd30f84b4d2c4, type: 3}
@@ -4358,8 +4363,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945616882}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.061, y: -2.25, z: -25.7041}
-  m_LocalScale: {x: 0.47665998, y: 52.4052, z: 10.24081}
+  m_LocalPosition: {x: -0.899, y: -2.25, z: -25.7041}
+  m_LocalScale: {x: 0.47665998, y: 52.4052, z: 9.922074}
   m_Children: []
   m_Father: {fileID: 1601759813}
   m_RootOrder: 0
@@ -8198,12 +8203,12 @@ PrefabInstance:
     - target: {fileID: 1572199931953014387, guid: 515ee2e0bbdb2a4438cf48dc161e7cef,
         type: 3}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1572199931623970824, guid: 515ee2e0bbdb2a4438cf48dc161e7cef,
         type: 3}
       propertyPath: m_Range
-      value: 4.3472586
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515ee2e0bbdb2a4438cf48dc161e7cef, type: 3}
