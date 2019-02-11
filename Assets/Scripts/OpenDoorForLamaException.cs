@@ -69,6 +69,7 @@ public class OpenDoorForLamaException : MonoBehaviour
         if (PlayerController.isDashing && exited && door.GetComponent<BoxCollider>().enabled == true)
         {
             door.GetComponent<BoxCollider>().enabled = false;
+            exited = false;
         }
     }
 }

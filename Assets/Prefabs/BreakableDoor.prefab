@@ -13,6 +13,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 7.768174, z: 2.263358}
   m_Center: {x: -1.1138305e-14, y: 3.8730474, z: -2.027016}
+--- !u!1 &1492899287721072048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7161330661652506497}
+  - component: {fileID: 8379795403643185513}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7161330661652506497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492899287721072048}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7863221075043945673}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &8379795403643185513
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492899287721072048}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.8392157, g: 0.8392157, b: 0.8392157, a: 1}
+  m_Intensity: 5
+  m_Range: 20
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &3761940312667743960
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +93,7 @@ GameObject:
   - component: {fileID: 7863221075043945673}
   - component: {fileID: 6441386303907947707}
   - component: {fileID: 6223264747133187507}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BreakableDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +113,7 @@ Transform:
   m_Children:
   - {fileID: 4892356117620318663}
   - {fileID: 855832493706930418}
+  - {fileID: 7161330661652506497}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd81294f4980d24fb1860aba321b9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explode: {fileID: 5168452557100283427, guid: b55f5ff75e5a06c4190bf79a16c8474e, type: 3}
   BoxHP: 1
   boxSpawnLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &6223264747133187507
@@ -97,6 +168,14 @@ PrefabInstance:
     - target: {fileID: 100002, guid: a3d312a20179bfc4a8fbe435582c4ba1, type: 3}
       propertyPath: m_Name
       value: DoorR
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a3d312a20179bfc4a8fbe435582c4ba1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a3d312a20179bfc4a8fbe435582c4ba1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a3d312a20179bfc4a8fbe435582c4ba1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -182,6 +261,14 @@ PrefabInstance:
     - target: {fileID: 100002, guid: ce173183db5ef174f819e3786f48c028, type: 3}
       propertyPath: m_Name
       value: DoorL
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce173183db5ef174f819e3786f48c028, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ce173183db5ef174f819e3786f48c028, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce173183db5ef174f819e3786f48c028, type: 3}
       propertyPath: m_LocalPosition.x

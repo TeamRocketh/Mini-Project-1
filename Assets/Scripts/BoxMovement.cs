@@ -16,6 +16,10 @@ public class BoxMovement : MonoBehaviour
     public bool LastBox = false;
     public GameObject trigger;
 
+    public Sprite Fine, Broke;
+    public GameObject semiexplosion;
+    public GameObject explosion;
+
     void Start()
     {
         boxSpawnLocation = transform.position;
@@ -47,15 +51,33 @@ public class BoxMovement : MonoBehaviour
                 if (!trigger.GetComponent<OpenDoor>().cond)
                 {
                     BoxHP--;
+
+                    if (BoxHP == 1)
+                    {
+                        GameObject temp = transform.GetChild(0).gameObject;
+                        foreach (Transform tr in temp.transform)
+                        {
+                            tr.GetComponent<SpriteRenderer>().sprite = Broke;
+                        }
+                    }
+                    
                     moveDir = temp.GetComponent<PlayerController>().dir;
                     boxRb.isKinematic = false;
                     boxRb.velocity = moveDir * speed;
                     isMoving = true;
+                    Instantiate(semiexplosion, transform.position, Quaternion.identity);
+
                     if (BoxHP == 0)
                     {
+                        Instantiate(explosion, transform.position, Quaternion.identity);
                         transform.position = boxSpawnLocation + new Vector3(0, 1.5f, 0);
                         boxRb.velocity = new Vector3(0, -0.1f, 0);
                         BoxHP = 2;
+                        GameObject temp = transform.GetChild(0).gameObject;
+                        foreach (Transform tr in temp.transform)
+                        {
+                            tr.GetComponent<SpriteRenderer>().sprite = Fine;
+                        }
                     }
                     triggered = false;
                 }
@@ -63,15 +85,33 @@ public class BoxMovement : MonoBehaviour
             else if (PlayerController.isDashing)
             {
                 BoxHP--;
+
+                if (BoxHP == 1)
+                {
+                    GameObject temp = transform.GetChild(0).gameObject;
+                    foreach (Transform tr in temp.transform)
+                    {
+                        tr.GetComponent<SpriteRenderer>().sprite = Broke;
+                    }
+                }
+
                 moveDir = temp.GetComponent<PlayerController>().dir;
                 boxRb.isKinematic = false;
                 boxRb.velocity = moveDir * speed;
                 isMoving = true;
+                Instantiate(semiexplosion, transform.position, Quaternion.identity);
+
                 if (BoxHP == 0)
                 {
+                    Instantiate(explosion, transform.position, Quaternion.identity);
                     transform.position = boxSpawnLocation + new Vector3(0, 1.5f, 0);
                     boxRb.velocity = new Vector3(0, -0.1f, 0);
                     BoxHP = 2;
+                    GameObject temp = transform.GetChild(0).gameObject;
+                    foreach (Transform tr in temp.transform)
+                    {
+                        tr.GetComponent<SpriteRenderer>().sprite = Fine;
+                    }
                 }
                 triggered = false;
             }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public string level;
-    public bool triggered = false;
+    public bool powerHimUp = false;
 
     public int fromWhere = 0;
 
@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
         if (other.tag == "Player")
         {
             SceneManager.LoadScene(level);
-            if (triggered)
+            if (powerHimUp)
             {
                 LevelManager.poweredUp = true;
             }
@@ -23,6 +23,13 @@ public class SceneLoader : MonoBehaviour
                     LevelManager.changePositionTo = new Vector3(10, 6.28f, 17);
                 else if (fromWhere == 2)
                     LevelManager.changePositionTo = new Vector3(0, 6.28f, 18);
+            }
+            if (level == "ExitHUB")
+            {
+                if (fromWhere == 1)
+                    LevelManager.changePositionTo = new Vector3(-10, 6.28f, 18);
+                else if (fromWhere == 2)
+                    LevelManager.changePositionTo = new Vector3(23, 6.28f, 35);
             }
         }
     }

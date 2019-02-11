@@ -76,11 +76,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space) && canDash)
             {
+                GetComponent<TrailRenderer>().enabled = true;
                 gravityScale = 0;
                 dir = new Vector3(moveX, 0, moveZ);
                 rb.velocity = Vector3.zero;
                 rb.velocity = dir*dashSpeed;
-                Debug.Log(dashSpeed);
+                //Debug.Log(dashSpeed);
                 dashPress = false;
                 isDashing = true;
             }           
@@ -88,9 +89,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentDashTime -= Time.deltaTime;
+            rb.velocity = dir * dashSpeed;
             if (currentDashTime <= 0)
             {
-                rb.velocity = new Vector3(0, rb.velocity.y, 0);                
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
             }
             if(currentDashTime <= -0.15f)
             {
@@ -101,6 +103,7 @@ public class PlayerController : MonoBehaviour
                 dashSpeed = tempDashSpeed;
                 currentDashTime = dashTime;
                 isLongDashing = false;
+                GetComponent<TrailRenderer>().enabled = false;
             }
         }
     }

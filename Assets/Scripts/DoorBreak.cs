@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorBreak : MonoBehaviour
 {
+    public GameObject explode;
+
     Rigidbody boxRb;
     public int BoxHP = 1;
     public Vector3 boxSpawnLocation;
@@ -22,6 +24,7 @@ public class DoorBreak : MonoBehaviour
             moveDir = other.GetComponent<PlayerController>().dir;
             if (BoxHP < 1)
             {
+                Instantiate(explode, transform.position, Quaternion.identity);
                 gameObject.SetActive(false);
             }
         }

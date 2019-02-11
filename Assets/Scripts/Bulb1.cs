@@ -11,10 +11,9 @@ public class Bulb1 : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            LevelManager.BulbCollected++;
             switch (number)
             {
-                case 0:
-                    break;
                 case 1:
                     PlayerController.canDash = true;
                     LevelManager.ill = true;
@@ -31,6 +30,13 @@ public class Bulb1 : MonoBehaviour
                     gameObject.SetActive(false);
                     break;
                 case 3:
+                    Ill.SetColor("_EmissionColor", new Color(1, 0, 0, 1));
+                    /*GameObject temp2 = GameObject.FindGameObjectWithTag("Lights").transform.GetChild(0).gameObject;
+                    foreach (Transform tr in temp2.transform)
+                    {
+                        tr.GetComponent<Light>().color = new Color(1, 0.3f, 0);
+                    }*/
+                    gameObject.SetActive(false);
                     break;
             }
         }
