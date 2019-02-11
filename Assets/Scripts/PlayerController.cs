@@ -97,7 +97,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Space) && canDash && dashAvailable)
             {
                 dir = new Vector3(moveX, 0, moveZ);
-                FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[2]);
+                if (dir != Vector3.zero)
+                {
+                    FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[2]);
+                }
+                
                 GetComponent<TrailRenderer>().enabled = true;
                 if (dashHasCooldown && dir != Vector3.zero)
                 {
@@ -118,7 +122,8 @@ public class PlayerController : MonoBehaviour
                             currentDashCharge -= 3;
                             break;
                     }
-                    FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[3]);
+                    if (dir != Vector3.zero)
+                        FindObjectOfType<SoundManager>().SFX.PlayOneShot(SoundManager.instance.soundList[3]);
                 }
                 gravityScale = 0;
                 rb.velocity = Vector3.zero;

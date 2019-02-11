@@ -2742,10 +2742,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alldials:
+  - Here's the key ... you have earned it.
   - Who are you ?
   - I'm just a small fire doing my work.
   - Oh ... you mean firework !?
   - Witness the FIRE - WORK !!!
+  frontGround: {fileID: 791332261}
   key: {fileID: 2009831244, guid: f1a4285e65b4b1d46b1e0f3548c1f168, type: 3}
   dialogues: {fileID: 1104194786}
 --- !u!1 &1099687086
@@ -2982,12 +2984,12 @@ PrefabInstance:
     - target: {fileID: 7126300721219634993, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1805.7
+      value: 1253.3
       objectReference: {fileID: 0}
     - target: {fileID: 7126300721219634993, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 338.6
+      value: 721.1
       objectReference: {fileID: 0}
     - target: {fileID: 644791770767002899, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
@@ -3010,7 +3012,9 @@ PrefabInstance:
       value: 'Put in the bulbs in the lamps according to the riddle using [1], [2]
         and [3] Numeric keys.
 
-        Remove the bulb for replacing it using [R] key.'
+        Remove the bulb for replacing it using [R] key.
+
+        Blue is afraid of red, orange must protect blue.'
       objectReference: {fileID: 0}
     - target: {fileID: 8635538480477134939, guid: c205e9d71e89f484e9ab32973d590bbe,
         type: 3}
@@ -4071,7 +4075,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Here's the key ... you have earned it.
+  m_Text: 
 --- !u!222 &1309667596
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4238,6 +4242,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1405371055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4984403128516051503, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1280.917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 381.4286
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.397875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984403128516051539, guid: 453bb8ab357992e46b43e54c228fd143,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 453bb8ab357992e46b43e54c228fd143, type: 3}
 --- !u!1 &1436798430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5855,7 +5928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.y

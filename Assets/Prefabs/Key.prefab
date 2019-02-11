@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8dcc5c35f8ff1429a14bc97724fc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RGVKA: {fileID: 1253142483436318, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
 --- !u!65 &5531964474501732999
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -29,10 +29,10 @@ public class LevelManager : MonoBehaviour
 
         Ill.color = new Color(0, 0, 0, 1);
 
-        if (PlayerPrefs.HasKey("level") && SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("level") && Time.time < 1)
+        /*if (PlayerPrefs.HasKey("level") && SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("level") && Time.time < 1)
         {
             SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
-        }
+        }*/
     }
 
     void Update()

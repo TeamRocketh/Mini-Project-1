@@ -33,50 +33,101 @@ public class PoleScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1) && PoleManager.RedAvailable)
             {
-                PoleManager.RedAvailable = false;
                 switch (PoleNumber)
                 {
-                    case 1: PoleManager.Pole1 = 1; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red); break;
-                    case 2: PoleManager.Pole2 = 1; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red); break;
-                    case 3: PoleManager.Pole3 = 1; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red); break;
+                    case 1:
+                        if (PoleManager.Pole1 == 0)
+                        {
+                            PoleManager.Pole1 = 1;
+                            PoleManager.RedAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                        }
+                        break;
+                    case 2:
+                        if (PoleManager.Pole2 == 0)
+                        {
+                            PoleManager.Pole2 = 1;
+                            PoleManager.RedAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                        }
+                        break;
+                    case 3:
+                        if (PoleManager.Pole3 == 0)
+                        {
+                            PoleManager.Pole3 = 1;
+                            PoleManager.RedAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = Color.red;
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                        }
+                        break;
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2) && PoleManager.BlueAvailable)
             {
-                PoleManager.BlueAvailable = false;
                 switch (PoleNumber)
                 {
-                    case 1: PoleManager.Pole1 = 2; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1)); break;
-                    case 2: PoleManager.Pole2 = 2; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1)); break;
-                    case 3: PoleManager.Pole3 = 2; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1)); break;
+                    case 1:
+                        if (PoleManager.Pole1 == 0)
+                        {
+                            PoleManager.Pole1 = 2;
+                            PoleManager.BlueAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
+                        }
+                        break;
+                    case 2:
+                        if (PoleManager.Pole2 == 0)
+                        {
+                            PoleManager.Pole2 = 2;
+                            PoleManager.BlueAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
+                        }
+                        break;
+                    case 3:
+                        if (PoleManager.Pole3 == 0)
+                        {
+                            PoleManager.Pole3 = 2;
+                            PoleManager.BlueAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(0, 0.6f, 1, 1);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
+                        }
+                        break;
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3) && PoleManager.OrangeAvailable)
             {
-                PoleManager.OrangeAvailable = false;
                 switch (PoleNumber)
                 {
-                    case 1: PoleManager.Pole1 = 3; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0)); break;
-                    case 2: PoleManager.Pole2 = 3; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0)); break;
-                    case 3: PoleManager.Pole3 = 3; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
-                        transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0)); break;
+                    case 1:
+                        if (PoleManager.Pole1 == 0)
+                        {
+                            PoleManager.Pole1 = 3;
+                            PoleManager.OrangeAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0));
+                        }
+                        break;
+                    case 2:
+                        if (PoleManager.Pole2 == 0)
+                        {
+                            PoleManager.Pole2 = 3;
+                            PoleManager.OrangeAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0));
+                        }
+                        break;
+                    case 3:
+                        if (PoleManager.Pole3 == 0)
+                        {
+                            PoleManager.Pole3 = 3;
+                            PoleManager.OrangeAvailable = false; transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Light>().color = new Color(1, 0.3f, 0);
+                            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(1, 0.3f, 0));
+                        }
+                        break;
                 }
             }
             else if (Input.GetKeyDown(KeyCode.R))

@@ -12,6 +12,8 @@ public class OpenPlay : MonoBehaviour
 
     bool cond = false;
 
+    float timer;
+
     private void Start()
     {
         LD = door.transform.GetChild(0).gameObject;
@@ -21,7 +23,10 @@ public class OpenPlay : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && LevelManager.hasKey)
+        {
             cond = true;
+            timer = Time.time;
+        }
     }
 
     private void OnTriggerExit(Collider other)

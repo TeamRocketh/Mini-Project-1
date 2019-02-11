@@ -7,6 +7,8 @@ public class KeySpawner : MonoBehaviour
 {
     public List<string> alldials;
 
+    public GameObject frontGround;
+
     public GameObject key;
     public GameObject dialogues;
 
@@ -20,6 +22,7 @@ public class KeySpawner : MonoBehaviour
         if (other.tag == "Fire")
         {
             dialogues.SetActive(true);
+            frontGround.SetActive(false);
             dialogues.transform.GetChild(0).gameObject.SetActive(true);
             dialogues.transform.GetChild(3).gameObject.SetActive(true);
             trig = true;
@@ -33,7 +36,7 @@ public class KeySpawner : MonoBehaviour
             Time.timeScale = 0;
         else Time.timeScale = 1;
 
-        if (trig && Input.GetKeyDown(KeyCode.Space) && dial > 3)
+        if (trig && Input.GetKeyDown(KeyCode.Space) && dial > 4)
         {
             trig = false;
             Instantiate(key, pos + new Vector3(0, 2, 0), Quaternion.identity);
@@ -43,12 +46,13 @@ public class KeySpawner : MonoBehaviour
             dialogues.transform.GetChild(3).gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && dial <= 3)
+        else if (Input.GetKeyDown(KeyCode.Space) && dial <= 4)
         {
             dialogues.transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<Text>().text = alldials[dial];
             if (dial % 2 == 0)
+                dialogues.transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.white;
+            else
                 dialogues.transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<Text>().color = new Color(1, 0.9f, 0.35f);
-            else dialogues.transform.GetChild(3).transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.white;
             dial++;
         }
     }
