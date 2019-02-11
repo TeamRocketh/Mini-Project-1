@@ -11,11 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public bool lit = false;
 
-    Image text;
-    Button exit;
-
     public static bool ill = false, poweredUp = false;
-    bool quitting = false, quitting2 = false;
 
     static LevelManager instance = null;
 
@@ -23,6 +19,14 @@ public class LevelManager : MonoBehaviour
 
     public static Vector3 changePositionTo = Vector3.zero;
     public static bool hasKey = false;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("level"))
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
+        }
+    }
 
     private void Start()
     {
@@ -38,11 +42,6 @@ public class LevelManager : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad < Time.deltaTime * 2)
         {
-            text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<Image>();
-            exit = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).GetComponent<Button>();
-            text.gameObject.SetActive(false);
-            exit.gameObject.SetActive(false);
-
             switch (SceneManager.GetActiveScene().name)
             {
                 case "level_Menu":
@@ -50,29 +49,35 @@ public class LevelManager : MonoBehaviour
                     {
                         Debug.Log("Fucku");
                         poweredUp = false;
-                        PlayerController.canDash = PlayerController.canLongDash = true;
-                        GameObject.FindGameObjectWithTag("Level1Door").transform.GetChild(0).gameObject.SetActive(true);
+                        PlayerController.canDash = PlayerController.canLongDash = true; PlayerController.canStoreDash = false;
+                         GameObject.FindGameObjectWithTag("Level1Door").transform.GetChild(0).gameObject.SetActive(true);
                     }
-                    else PlayerController.canDash = PlayerController.canLongDash = false;
+                    else PlayerController.canDash = PlayerController.canLongDash = PlayerController.canStoreDash = false;
                     break;
                 case "Level1":
                     Ill.SetColor("_EmissionColor", Color.black);
                     Lights = GameObject.FindGameObjectWithTag("Lights");
                     Lights.transform.GetChild(0).gameObject.SetActive(false);
-                    PlayerController.canDash = PlayerController.canLongDash = false;
+                    PlayerController.canDash = PlayerController.canLongDash = PlayerController.canStoreDash = false;
                     break;
                 case "Level2":
-                    PlayerController.canDash = true; PlayerController.canLongDash = false;
-                    //Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
+                    PlayerController.canDash = true; PlayerController.canLongDash = PlayerController.canStoreDash = false;
                     Ill.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
                     break;
                 case "Level3":
                     PlayerController.canDash = PlayerController.canLongDash = true;
-                    //Ill.SetColor("_EmissionColor", new Color(0, 1, 0.8f, 1));
                     Ill.SetColor("_EmissionColor", Color.red);
                     break;
                 case "ExitHUB":
-                    PlayerController.canDash = PlayerController.canLongDash = true;
+                    if (poweredUp)
+                    {
+                        PlayerController.canDash = PlayerController.canLongDash = PlayerController.canStoreDash = true;
+                    }
+                    else
+                    {
+                        PlayerController.canDash = PlayerController.canLongDash = true;
+                        PlayerController.canStoreDash = false;
+                    }
                     break;
             }
         }
@@ -83,7 +88,7 @@ public class LevelManager : MonoBehaviour
             changePositionTo = Vector3.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             if (SceneManager.GetActiveScene().name == "Level1")
@@ -94,31 +99,25 @@ public class LevelManager : MonoBehaviour
                 changePositionTo = new Vector3(-10, 6.28f, -6);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (ill && SceneManager.GetActiveScene().name == "Level1")
         {
             ill = false;
             Ill.SetColor("_EmissionColor", new Color(0, 0.6f, 1, 1));
             Lights.transform.GetChild(0).gameObject.SetActive(true);
         }
-        if (quitting && quitting2)
-            Application.Quit();
     }
 
     private void OnApplicationQuit()
     {
-        if (!quitting)
+        if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2" || SceneManager.GetActiveScene().name == "Level3")
         {
-            Application.CancelQuit();
-            text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<Image>();
-            exit = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(2).GetComponent<Button>();
-            text.gameObject.SetActive(true);
-            exit.gameObject.SetActive(true);
-            quitting = true;
+            PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex);
         }
-    }
-
-    public void ExitButton()
-    {
-        quitting2 = true;
     }
 }
