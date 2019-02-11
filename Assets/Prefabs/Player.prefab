@@ -280,9 +280,14 @@ MonoBehaviour:
   speed: 15
   dashSpeed: 150
   dashTime: 0.025
+  cooldownTimer: 0
+  longDashHoldTime: 0
   currentDashTime: 0
+  currentCooldownTime: 0
+  currentLongDashHoldTime: 0
   dashPress: 0
   dir: {x: 0, y: 0, z: 0}
+  currentDashCharge: 0
 --- !u!96 &4617893611146952404
 TrailRenderer:
   serializedVersion: 2
