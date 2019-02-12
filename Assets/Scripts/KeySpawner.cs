@@ -8,6 +8,7 @@ public class KeySpawner : MonoBehaviour
     public List<string> alldials;
 
     public GameObject frontGround;
+    public GameObject NotAvailable;
 
     public GameObject key;
     public GameObject dialogues;
@@ -23,6 +24,8 @@ public class KeySpawner : MonoBehaviour
         {
             dialogues.SetActive(true);
             frontGround.SetActive(false);
+            if (NotAvailable.activeInHierarchy)
+                NotAvailable.SetActive(false);
             dialogues.transform.GetChild(0).gameObject.SetActive(true);
             dialogues.transform.GetChild(3).gameObject.SetActive(true);
             trig = true;

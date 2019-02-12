@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PopUpText : MonoBehaviour
 {
     public GameObject root;
+    public GameObject NotAvailable;
     bool triggered = false;
 
     public bool bulb = false;
@@ -19,6 +20,8 @@ public class PopUpText : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            if (NotAvailable.activeInHierarchy)
+                NotAvailable.SetActive(false);
             root.SetActive(true);
             triggered = true;
         }

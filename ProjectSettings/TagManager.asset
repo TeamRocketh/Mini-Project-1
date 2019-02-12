@@ -12,6 +12,7 @@ TagManager:
   - Door1
   - Mesh1
   - Mesh2
+  - LevelDoorLight
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ public class PoleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && LevelManager.BulbCollected >= 3)
+        if (other.tag == "Player" && (LevelManager.hasRed == 1 && LevelManager.hasBlue == 1 && LevelManager.hasOrange == 1))
             inside = true;
     }
 

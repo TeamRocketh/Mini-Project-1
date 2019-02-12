@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExitHUB.unity
     guid: b62ad5884fc91c046ae43f4fffb90bc0
+  - enabled: 1
+    path: Assets/Scenes/ExitCredits.unity
+    guid: c3e6173bbcc18fa469fc852a21c77cf4
   m_configObjects: {}

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public int currentDashCharge = 0;
     public static bool startingComplete = false;
 
+    GameObject goku;
+
     void Start()
     {
         tempDashSpeed = dashSpeed;
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
         currentDashTime = dashTime;
         currentCooldownTime = cooldownTimer;
         currentLongDashHoldTime = longDashHoldTime;
+        goku = transform.GetChild(2).gameObject;
+        goku.SetActive(false);
     }
 
     void Update()
@@ -60,6 +64,8 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space) && canDash)
                 {
                     dashPress = true;
+                    if (canLongDash)
+                        goku.SetActive(true);
                 }
             }
             else if (isLongDashing != true && canLongDash)
@@ -135,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 dashPress = false;
                 currentLongDashHoldTime = longDashHoldTime;
                 isDashing = true;
+                goku.SetActive(false);
             }
         }
         else
